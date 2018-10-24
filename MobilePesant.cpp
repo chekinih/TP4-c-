@@ -1,17 +1,17 @@
 #include "MobilePesant.h"
 
 
-MobilePesant::MobilePesant(std::string & _nom): Mobile(_nom), masse(0)
+MobilePesant::MobilePesant(const std::string & _nom): Mobile(_nom), masse(0)
 {}
 
-MobilePesant::MobilePesant(std::string & _nom, double _masse): Mobile(_nom), masse(_masse)
+MobilePesant::MobilePesant(const std::string & _nom, double _masse): Mobile(_nom), masse(_masse)
 {}
 
-MobilePesant::MobilePesant(std::string & _nom, Vecteur3D _position, double _masse)
+MobilePesant::MobilePesant(const std::string & _nom, Vecteur3D _position, double _masse)
 :Mobile(_nom, _position), masse(_masse)
 {}
 
-MobilePesant::MobilePesant(std::string & _nom, Vecteur3D _position,Vecteur3D _vitesse ,double _masse)
+MobilePesant::MobilePesant(const std::string & _nom, Vecteur3D _position,Vecteur3D _vitesse ,double _masse)
 :Mobile(_nom, _position, _vitesse), masse(_masse)
 {
 

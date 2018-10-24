@@ -15,8 +15,8 @@ class Mobile {
   public:
     // Mobile();
     Mobile(const std::string & _nom);
-    Mobile(std::string _nom, const Vecteur3D & _position);
-    Mobile(std::string _nom, const Vecteur3D & _position, const Vecteur3D & _vitesse);
+    Mobile(const std::string _nom, const Vecteur3D & _position);
+    Mobile(const std::string _nom, const Vecteur3D & _position, const Vecteur3D & _vitesse);
     const std::string & getNom() const;
     void setNom(const std::string &);
     const Vecteur3D & getPosition() const;

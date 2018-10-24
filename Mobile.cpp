@@ -3,10 +3,10 @@
 Mobile::Mobile(const std::string & _nom): nom(_nom)
 {}
 
-Mobile::Mobile(std::string _nom, const Vecteur3D & _position):nom(_nom), position(_position) {
+Mobile::Mobile(const std::string _nom, const Vecteur3D & _position):nom(_nom), position(_position) {
 
 }
-Mobile::Mobile(std::string _nom, const Vecteur3D & _position, const Vecteur3D & _vitesse)
+Mobile::Mobile(const std::string _nom, const Vecteur3D & _position, const Vecteur3D & _vitesse)
 : nom(_nom), position(_position), vitesse(_vitesse)
 {}
 
