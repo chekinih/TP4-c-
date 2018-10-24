@@ -40,12 +40,12 @@ void Simulation::afficherCorps()
   }
 }
 
-std::list<Mobile*> Simulation::getCorps()
+std::list<Mobile*> Simulation::getCorps()const
 {
   return corps;
 }
 
-double Simulation::getTemps()
+double Simulation::getTemps()const
 {
   return temps;
 }

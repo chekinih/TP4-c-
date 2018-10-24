@@ -2,7 +2,7 @@
 #include <string>
 #include <cmath>
 #include <iostream>
-
+#include "Simulation.h"
 
 bool Tests::testMobile1()
 {
@@ -114,13 +114,46 @@ bool Tests::testMobile2() {
     return false;
   }
 }
-/*
-static Tests::bool testSimulation3()
-{
-  simulation s;
-  Mobile *mobileOrdinaire = new MobilePesant()
 
-}*/
+bool Tests::testSimulation3()
+{
+  Simulation s;
+  std::string ordinaire =" MobileOrdianre";
+  std::string pesant =" MobilePesant";
+
+  Vecteur3D vitesseO(1, 1, 1);
+  Vecteur3D positionO(4,4, 0);
+  Vecteur3D vitesseP(1, 1, 1);
+  Vecteur3D positionP(3,3, 0);
+
+  Mobile *mobileOrdinaire = new Mobile(ordinaire, positionO, vitesseO);
+  Mobile *mobilePesant = new MobilePesant(pesant, positionP,vitesseP,200.0);
+  s.ajoutCorps(mobileOrdinaire);
+  s.ajoutCorps(mobilePesant);
+  //s.afficherCorps();
+
+  Vecteur3D expected_Pos_Ordinaire(12,12,8);
+  Vecteur3D expected_Vit_Ordinaire(1, 1, 1); // la vitesse d'mobile ordinaire reste inchangée
+
+  Vecteur3D expected_Pos_Pesant(11,11, -227.44);
+  Vecteur3D expected_Vit_Pesant(1, 1, -77.48);
+
+  while(s.getTemps() < 8)
+  {
+    s.simuler(2);
+  }
+  s.afficherCorps();
+
+
+  return (mobileOrdinaire->getPosition().x == expected_Pos_Ordinaire.x) && (mobileOrdinaire->getPosition().y == expected_Pos_Ordinaire.y) && (mobileOrdinaire->getPosition().z == expected_Pos_Ordinaire.z)
+  &&
+        (mobileOrdinaire->getVitesse().x == expected_Vit_Ordinaire.x) && (mobileOrdinaire->getVitesse().y == expected_Vit_Ordinaire.y) && (mobileOrdinaire->getVitesse().z == expected_Vit_Ordinaire.z)
+  &&
+        (mobilePesant->getPosition().x == expected_Pos_Pesant.x) && (mobilePesant->getPosition().y == expected_Pos_Pesant.y) && (mobilePesant->getPosition().z == expected_Pos_Pesant.z)
+  &&
+        (mobilePesant->getVitesse().x == expected_Vit_Pesant.x) && (mobilePesant->getVitesse().y == expected_Vit_Pesant.y) && (mobilePesant->getVitesse().z == expected_Vit_Pesant.z);
+
+}
 
 
 

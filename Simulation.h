@@ -12,12 +12,13 @@ private:
 public:
   Simulation();
   ~Simulation();
+  std::list<Mobile*> getCorps() const;
+  double getTemps()const;
   void oteCorps(Mobile * _m);
   void ajoutCorps(Mobile * _m);
   void afficherCorps();
 
-  std::list<Mobile*> getCorps();
-  double getTemps();
+
 
   void simuler(double dt);
 };

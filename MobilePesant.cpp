@@ -11,6 +11,11 @@ MobilePesant::MobilePesant(std::string & _nom, Vecteur3D _position, double _mass
 :Mobile(_nom, _position), masse(_masse)
 {}
 
+MobilePesant::MobilePesant(std::string & _nom, Vecteur3D _position,Vecteur3D _vitesse ,double _masse)
+:Mobile(_nom, _position, _vitesse), masse(_masse)
+{
+
+}
 MobilePesant::~MobilePesant()
 {
   std::cout << "Destruction du mobile pesant" << std::endl;
@@ -24,6 +29,7 @@ void MobilePesant::setMasse(double _masse){
 
  void MobilePesant::avance(double dt){
   Mobile::avance(dt);
+  std::cout << "méthode avance de MobilePesant"<<std::endl;
   double vx, vy, vz;
   vx = getVitesse().x + dt * 0;
   vy = getVitesse().y + dt * 0;

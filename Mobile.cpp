@@ -37,6 +37,7 @@ void Mobile::afficher() const {
 
 
  void Mobile::avance(double dt) {
+  std::cout << "méthode avance de Mobile" <<std::endl;
   position.x = position.x + dt * vitesse.x;
   position.y = position.y + dt * vitesse.y;
   position.z = position.z + dt * vitesse.z;

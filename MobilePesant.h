@@ -12,6 +12,7 @@ class MobilePesant: public Mobile {
     MobilePesant(std::string & _nom);
     MobilePesant(std::string & _nom, double _masse);
     MobilePesant(std::string & _nom, Vecteur3D _position, double _masse);
+    MobilePesant(std::string & _nom, Vecteur3D _position,Vecteur3D _vitesse ,double _masse);
     ~MobilePesant();
     double getMasse()const;
     void setMasse(double _masse);
