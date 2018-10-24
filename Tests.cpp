@@ -1,5 +1,6 @@
 #include "Tests.h"
 #include <string>
+#include <cmath>
 #include <iostream>
 
 
@@ -79,35 +80,48 @@ bool Tests::testSimulation2()
 
 bool Tests::testMobile2() {
   //ecteur3D h; //z represente l'altitude
-  Simulation s;
 
   double h = 10.0;
   double temps = 0;
   double dt = 0.01;
+  double expectedTime;
+  expectedTime = sqrt((2 * h)/9.81);
 
   Vecteur3D vitesse(0, 0, 0);
   Vecteur3D position(0,0, h);
-  std::string nom  = "M12";
-  MobilePesant * mobilePesant = new MobilePesant(nom, position, 200.0);
+  std::string nom  = "mobilePesant";
+  Mobile * mobilePesant = new MobilePesant(nom, position, 200.0);
+
   mobilePesant->setVitesse(vitesse);
 
-  s.ajoutCorps(mobilePesant);
-
   while (h > 0) {
-
-    std::cout << "Z: " << mobilePesant->getPosition().z<< std::endl;
+    //std::cout << "Z: " << mobilePesant->getPosition().z<< std::endl;
     mobilePesant->avance(dt);
     h = mobilePesant->getPosition().z;
     temps += dt;
-    std::cout <<"tour" << std::endl;
   }
-
   std::cout << "temps: " << temps << std::endl;
+  std::cout << "Time expected: "<< expectedTime << std::endl;
 
-  //s.simuler(1);
+  delete mobilePesant;
 
-
+  if((temps <= expectedTime + 0.1) && (temps >= expectedTime - 0.1))
+  {
+    /*Si l'erreur est de 1O puissance -1*/
+    std::cout << "Le mobile pesant a mis environ " << expectedTime <<"pour atteindre le sol"<< std::endl;
+    return true;
+  }else{
+    return false;
+  }
 }
+/*
+static Tests::bool testSimulation3()
+{
+  simulation s;
+  Mobile *mobileOrdinaire = new MobilePesant()
+
+}*/
+
 
 
 /*bool Tests::testMobile2(){
