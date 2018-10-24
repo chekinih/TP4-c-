@@ -11,6 +11,7 @@ private:
 
 public:
   Simulation();
+  Simulation(const Simulation &);
   ~Simulation();
   void oteCorps(Mobile * _m);
   void ajoutCorps(Mobile * _m);

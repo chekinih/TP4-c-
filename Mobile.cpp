@@ -55,3 +55,8 @@ Mobile::~Mobile() {
   // }
   std::cout << "Destuction du mobile " << nom << std::endl << std::endl;
 }
+
+
+Mobile* Mobile::copie() {
+    return new Mobile(nom, position, vitesse);
+}
