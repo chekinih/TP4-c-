@@ -17,7 +17,8 @@ class MobilePesant: public Mobile {
     double getMasse()const;
     void setMasse(double _masse);
     void avance(double dt);
-
+    void afficher() const;
+    Mobile* copie();
 };
 
 #endif

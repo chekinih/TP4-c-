@@ -229,7 +229,33 @@ bool Tests::testSimulation3()
 *//*
 //  return (avance1.x == expectedV1.x) && (avance1.y == expectedV1.y) && (avance1.z == expectedV1.z);
 
-
-
-
 }*/
+
+
+bool Tests::testSimulation4()
+{
+    Simulation sAcien;
+
+    Mobile* m1 = new Mobile("M1");
+      Vecteur3D v1(3,3,3);
+      m1->setVitesse(v1);
+
+      Vecteur3D p2(2,2,2);
+      Vecteur3D v2(1,1,1);
+      MobilePesant * m2 = new MobilePesant("M2", p2, v2, 2);
+
+    sAcien.ajoutCorps(m1);
+    sAcien.ajoutCorps(m2);
+
+
+    sAcien.simuler(2);
+
+    Simulation sNouveau(sAcien);
+
+
+
+    sNouveau.simuler(2);
+    sNouveau.afficherCorps();
+
+    return true;
+}

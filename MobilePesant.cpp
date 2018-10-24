@@ -38,3 +38,13 @@ void MobilePesant::setMasse(double _masse){
   Vecteur3D V3D(vx, vy, vz);
   setVitesse(V3D);
 }
+
+Mobile * MobilePesant::copie() {
+    return new MobilePesant(nom, position, vitesse, masse);
+}
+
+void MobilePesant::afficher() const{
+  Mobile::afficher();
+  std::cout << "Masse x = " << masse << std::endl << std::endl;
+
+}

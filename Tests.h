@@ -14,6 +14,7 @@ public:
   static bool testSimulation2();
   static bool testMobile2();
   static bool testSimulation3();
+  static bool testSimulation4();
 };
 
 #endif

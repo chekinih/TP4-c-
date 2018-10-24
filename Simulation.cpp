@@ -19,6 +19,15 @@ Simulation::~Simulation()
   corps.clear();
 }
 
+Simulation::Simulation(const Simulation & _simulation)
+{
+  std::list<Mobile *> corps = _simulation.corps;
+  for(std::list<Mobile *>::iterator it = corps.begin(); it != corps.end(); it++)
+  {
+    std::cout << "Simulation  par copie dans simulation:" << std::endl;
+    this->corps.push_back((*it)->copie());
+  }
+}
 
 void Simulation::ajoutCorps(Mobile * _m)
 {

@@ -13,8 +13,7 @@ int main()
     // }
 
     //Tests::testSimulation2();
-    //Tests::testMobile2();
-    Tests::testSimulation3();
+    Tests::testSimulation4();
 
     return 0;
 }

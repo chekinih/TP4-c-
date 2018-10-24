@@ -7,7 +7,7 @@
 
 class Mobile {
 
-  private:
+  protected:
     std::string nom;
     Vecteur3D position;
     Vecteur3D vitesse;
@@ -23,8 +23,9 @@ class Mobile {
     void setPosition(const Vecteur3D &);
     const Vecteur3D & getVitesse() const;
     void setVitesse(const Vecteur3D &);
-    void afficher() const;
+    virtual void afficher() const;
     virtual void avance(double dt);
+    virtual Mobile* copie();
 
   public:
     virtual ~Mobile();

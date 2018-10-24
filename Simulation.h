@@ -11,6 +11,7 @@ private:
 
 public:
   Simulation();
+  Simulation(const Simulation &);
   ~Simulation();
   std::list<Mobile*> getCorps() const;
   double getTemps()const;
