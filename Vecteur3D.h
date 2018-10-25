@@ -1,6 +1,8 @@
 #ifndef VECTEUR3D_H
 #define VECTEUR3D_H
 
+#include <iostream>
+
 class Vecteur3D {
     private:
         double x, y, z;
@@ -12,7 +14,11 @@ class Vecteur3D {
         {}
         double& operator[](int pos);
         Vecteur3D operator+(Vecteur3D & v2);
-
+        Vecteur3D operator-(Vecteur3D & v2);
+        bool operator==(Vecteur3D v2);
+        Vecteur3D& operator+=(Vecteur3D v2);
+        Vecteur3D& operator-=(Vecteur3D v2);
+        friend std::ostream& operator<<( std::ostream &flux, Vecteur3D v);
 };
 
 #endif

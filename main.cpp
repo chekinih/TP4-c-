@@ -2,6 +2,7 @@
 #include "Mobile.h"
 #include "Tests.h"
 #include "Simulation.h"
+#include "Vecteur3D.h"
 
 int main()
 {
@@ -13,7 +14,7 @@ int main()
     // }
 
     //Tests::testSimulation2();
-    Tests::testSimulation4();
-
+    Vecteur3D v(0,0,0);
+    std::cout << v << std::endl;
     return 0;
 }
