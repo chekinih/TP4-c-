@@ -55,9 +55,3 @@ std::ostream& operator<<( std::ostream &flux, Vecteur3D v )
     flux << "x: " << v[0] << " y: " << v[1] << " z: " << v[2];
     return flux;
 }
-
-Vecteur3D Vecteur3D::gravite() {
-    double GM = 3.986 * pow(10, 14);
-    double P = sqrt(pow((*this)[0], 2) + pow((*this)[1], 2) + pow((*this)[2], 2));
-    return this * (- GM / pow(P, 3));
-}
