@@ -20,3 +20,7 @@ Vecteur3D operator + (Vecteur3D& v2){
 Vecteur3D Vecteur3D::operator *(double d){
   return Vecteur3D(d*(*this)[0],d*(*this)[1],d*(*this)[2]);
 }
+
+Vecteur3D Vecteur3D::operator<<(Vecteur3D& v2) {
+
+}
