@@ -23,6 +23,9 @@ Vecteur3D Vecteur3D::operator *(double d){
   return Vecteur3D(d*(*this)[0],d*(*this)[1],d*(*this)[2]);
 }
 
+ Vecteur3D operator *(double d, Vecteur3D &v){
+    return Vecteur3D(d*v[0],d*v[1],d*v[2]);
+}
 Vecteur3D Vecteur3D::operator-(Vecteur3D& v2) {
     return Vecteur3D((*this)[0] - v2[0], (*this)[1] - v2[1], (*this)[2] - v2[2]);
 }

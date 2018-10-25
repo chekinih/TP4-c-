@@ -15,6 +15,7 @@ int main()
 
     //Tests::testSimulation2();
     //Tests::testSimulation4();
+    Tests::testVecteur3D;
 
     return 0;
 }

@@ -41,7 +41,7 @@ void Mobile::afficher() {
   int i;
   for(i=0; i< 3; i++)
   {
-    position[i] = position[i] + vitesse[i]*dt;
+    position[i] +=vitesse[i]*dt;
   }
 
 }
