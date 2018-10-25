@@ -16,13 +16,13 @@ const std::string & Mobile::getNom() const {
 void Mobile::setNom(const std::string & _nom) {
   nom = _nom;
 }
-const Vecteur3D & Mobile::getPosition() const {
+Vecteur3D & Mobile::getPosition() {
   return position;
 }
 void Mobile::setPosition(const Vecteur3D & _position) {
   position = _position;
 }
-const Vecteur3D & Mobile::getVitesse() const {
+Vecteur3D & Mobile::getVitesse() {
   return vitesse;
 }
 void Mobile::setVitesse(const Vecteur3D & _vitesse) {

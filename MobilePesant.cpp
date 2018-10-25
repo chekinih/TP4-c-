@@ -43,7 +43,7 @@ Mobile * MobilePesant::copie() {
     return new MobilePesant(nom, position, vitesse, masse);
 }
 
-void MobilePesant::afficher() const{
+void MobilePesant::afficher(){
   Mobile::afficher();
   std::cout << "Masse x = " << masse << std::endl << std::endl;
 

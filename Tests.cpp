@@ -16,7 +16,7 @@ bool Tests::testMobile1()
   //Fonction
    m1.avance(2);
   //Assertion
-  return (m1.getPosition().x == expected.x) && (m1.getPosition().y == expected.y) && (m1.getPosition().z == expected.z);
+  return (m1.getPosition()[0] == expected[0]) && (m1.getPosition()[1] == expected[1]) && (m1.getPosition()[2] == expected[2]);
 
 }
 
@@ -46,9 +46,9 @@ bool Tests::testSimulation1()
   Vecteur3D positionEspereM2(4,4,4);
 
   return
-  (m1->getPosition().x == positionEspereM1.x) && (m1->getPosition().y == positionEspereM1.y) && (m1->getPosition().z == positionEspereM1.z)
+  (m1->getPosition()[0] == positionEspereM1[0]) && (m1->getPosition()[1] == positionEspereM1[1]) && (m1->getPosition()[2] == positionEspereM1[2])
   &&
-  (m2->getPosition().x == positionEspereM2.x) && (m2->getPosition().y == positionEspereM2.y) && (m2->getPosition().z == positionEspereM2.z)
+  (m2->getPosition()[0] == positionEspereM2[0]) && (m2->getPosition()[1] == positionEspereM2[1]) && (m2->getPosition()[2] == positionEspereM2[2])
   ;
 
 
@@ -74,7 +74,7 @@ bool Tests::testSimulation2()
   delete s;
 
 
-  std::cout << "X de m2: " << m2->getPosition().x << std::endl << std::endl;
+  std::cout << "X de m2: " << m2->getPosition()[0] << std::endl << std::endl;
   return true;
 }
 
@@ -95,9 +95,9 @@ bool Tests::testMobile2() {
   mobilePesant->setVitesse(vitesse);
 
   while (h > 0) {
-    //std::cout << "Z: " << mobilePesant->getPosition().z<< std::endl;
+    //std::cout << "Z: " << mobilePesant->getPosition()[2]<< std::endl;
     mobilePesant->avance(dt);
-    h = mobilePesant->getPosition().z;
+    h = mobilePesant->getPosition()[2];
     temps += dt;
   }
   std::cout << "temps: " << temps << std::endl;
@@ -145,13 +145,13 @@ bool Tests::testSimulation3()
   s.afficherCorps();
 
 
-  return (mobileOrdinaire->getPosition().x == expected_Pos_Ordinaire.x) && (mobileOrdinaire->getPosition().y == expected_Pos_Ordinaire.y) && (mobileOrdinaire->getPosition().z == expected_Pos_Ordinaire.z)
+  return (mobileOrdinaire->getPosition()[0] == expected_Pos_Ordinaire[0]) && (mobileOrdinaire->getPosition()[1] == expected_Pos_Ordinaire[1]) && (mobileOrdinaire->getPosition()[2] == expected_Pos_Ordinaire[2])
   &&
-        (mobileOrdinaire->getVitesse().x == expected_Vit_Ordinaire.x) && (mobileOrdinaire->getVitesse().y == expected_Vit_Ordinaire.y) && (mobileOrdinaire->getVitesse().z == expected_Vit_Ordinaire.z)
+        (mobileOrdinaire->getVitesse()[0] == expected_Vit_Ordinaire[0]) && (mobileOrdinaire->getVitesse()[1] == expected_Vit_Ordinaire[1]) && (mobileOrdinaire->getVitesse()[2] == expected_Vit_Ordinaire[2])
   &&
-        (mobilePesant->getPosition().x == expected_Pos_Pesant.x) && (mobilePesant->getPosition().y == expected_Pos_Pesant.y) && (mobilePesant->getPosition().z == expected_Pos_Pesant.z)
+        (mobilePesant->getPosition()[0] == expected_Pos_Pesant[0]) && (mobilePesant->getPosition()[1] == expected_Pos_Pesant[1]) && (mobilePesant->getPosition()[2] == expected_Pos_Pesant[2])
   &&
-        (mobilePesant->getVitesse().x == expected_Vit_Pesant.x) && (mobilePesant->getVitesse().y == expected_Vit_Pesant.y) && (mobilePesant->getVitesse().z == expected_Vit_Pesant.z);
+        (mobilePesant->getVitesse()[0] == expected_Vit_Pesant[0]) && (mobilePesant->getVitesse()[1] == expected_Vit_Pesant[1]) && (mobilePesant->getVitesse()[2] == expected_Vit_Pesant[2]);
 
 }
 
@@ -170,14 +170,14 @@ bool Tests::testSimulation3()
 
 
     std::cout << "Mobile pesant M1 : " << std::endl;
-    std::cout << "Position: mobilePesant.x =  : " << mobilePesant->getPosition().x << std::endl;
-    std::cout << "Position: mobilePesant.Y =  : " << mobilePesant->getPosition().y << std::endl;
-    std::cout << "Position:mobilePesant.Z =  : " << mobilePesant->getPosition().z << std::endl;
+    std::cout << "Position: mobilePesant[0] =  : " << mobilePesant->getPosition()[0] << std::endl;
+    std::cout << "Position: mobilePesant[1] =  : " << mobilePesant->getPosition()[1] << std::endl;
+    std::cout << "Position:mobilePesant[2] =  : " << mobilePesant->getPosition()[2] << std::endl;
 
 
-    std::cout << "Vitesse: mobilePesant.x =  : " << mobilePesant->getVitesse().x << std::endl;
-    std::cout << "Vitesse: mobilePesant.Y =  : " << mobilePesant->getVitesse().y << std::endl;
-    std::cout << "Vitesse: mobilePesant.Z =  : " << mobilePesant->getVitesse().z << std::endl;
+    std::cout << "Vitesse: mobilePesant[0] =  : " << mobilePesant->getVitesse()[0] << std::endl;
+    std::cout << "Vitesse: mobilePesant[1] =  : " << mobilePesant->getVitesse()[1] << std::endl;
+    std::cout << "Vitesse: mobilePesant[2] =  : " << mobilePesant->getVitesse()[2] << std::endl;
   delete mobilePesant;
 
 
@@ -192,18 +192,18 @@ bool Tests::testSimulation3()
   m1->avance(2);
 
   std::cout << "Mobile pesant M1 : " << std::endl;
-  std::cout << "Position: M1.x =  : " << m1->getPosition().x << std::endl;
-  std::cout << "Position: M1.Y =  : " << m1->getPosition().y << std::endl;
-  std::cout << "Position: M1.Z =  : " << m1->getPosition().z << std::endl;
+  std::cout << "Position: M1[0] =  : " << m1->getPosition()[0] << std::endl;
+  std::cout << "Position: M1[1] =  : " << m1->getPosition()[1] << std::endl;
+  std::cout << "Position: M1[2] =  : " << m1->getPosition()[2] << std::endl;
 
   Vecteur3D expectedV1(3, 3, -16.62);
 
-  std::cout << "Vitesse: M1.x =  : " << m1->getVitesse().x << std::endl;
-  std::cout << "Vitesse: M1.Y =  : " << m1->getVitesse().y << std::endl;
-  std::cout << "Vitesse: M1.Z =  : " << m1->getVitesse().z << std::endl;
+  std::cout << "Vitesse: M1[0] =  : " << m1->getVitesse()[0] << std::endl;
+  std::cout << "Vitesse: M1[1] =  : " << m1->getVitesse()[1] << std::endl;
+  std::cout << "Vitesse: M1[2] =  : " << m1->getVitesse()[2] << std::endl;
 
-  if((m1->getPosition().x == expectedP1.x) && (m1->getPosition().y== expectedP1.y) && (m1->getPosition().z== expectedP1.z)
-      && (m1->getVitesse().x == expectedV1.x) && (m1->getVitesse().y== expectedV1.y) && (m1->getVitesse().z== expectedV1.z) )
+  if((m1->getPosition()[0] == expectedP1[0]) && (m1->getPosition()[1]== expectedP1[1]) && (m1->getPosition()[2]== expectedP1[2])
+      && (m1->getVitesse()[0] == expectedV1[0]) && (m1->getVitesse()[1]== expectedV1[1]) && (m1->getVitesse()[2]== expectedV1[2]) )
   {
     std::cout << "Le test Mobile2 réussit" << std::endl;
     return true;
@@ -222,12 +222,12 @@ bool Tests::testSimulation3()
   Vecteur3D avance2 = m2->avance(2);
 
   std::cout << "Mobile pesant M2 : " << std::endl;
-  std::cout << "M2.x =  : " << m2->getPosition().x << std::endl;
-  std::cout << "M2.Y =  : " << m2->getPosition().y << std::endl;
-  std::cout << "M2.Z =  : " << m2->getPosition().z << std::endl;
+  std::cout << "M2[0] =  : " << m2->getPosition()[0] << std::endl;
+  std::cout << "M2[1] =  : " << m2->getPosition()[1] << std::endl;
+  std::cout << "M2[2] =  : " << m2->getPosition()[2] << std::endl;
 
 *//*
-//  return (avance1.x == expectedV1.x) && (avance1.y == expectedV1.y) && (avance1.z == expectedV1.z);
+//  return (avance1[0] == expectedV1[0]) && (avance1[1] == expectedV1[1]) && (avance1[2] == expectedV1[2]);
 
 }*/
 

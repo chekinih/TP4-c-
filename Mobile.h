@@ -19,9 +19,9 @@ class Mobile {
     Mobile(const std::string _nom, const Vecteur3D & _position, const Vecteur3D & _vitesse);
     const std::string & getNom() const;
     void setNom(const std::string &);
-    const Vecteur3D & getPosition() const;
+    Vecteur3D & getPosition();
     void setPosition(const Vecteur3D &);
-    const Vecteur3D & getVitesse() const;
+    Vecteur3D & getVitesse();
     void setVitesse(const Vecteur3D &);
     virtual void afficher();
     virtual void avance(double dt);
