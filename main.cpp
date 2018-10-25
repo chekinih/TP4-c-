@@ -2,6 +2,7 @@
 #include "Mobile.h"
 #include "Tests.h"
 #include "Simulation.h"
+#include "Vecteur3D.h"
 
 int main()
 {
