@@ -234,7 +234,8 @@ bool Tests::testSimulation4()
 
     sAcien.ajoutCorps(m1);
     sAcien.ajoutCorps(m2);
-
+    sAcien.oteCorps(m2);
+    sNouveau.oteCorps(m2);
 
     sAcien.simuler(2);
 

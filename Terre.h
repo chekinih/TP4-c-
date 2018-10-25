@@ -5,7 +5,7 @@
 
 class Terre {
     private:
-        double GM;
+        const double GM = 3.986* pow(10,14);
         double RT;
 
     public:
