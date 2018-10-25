@@ -2,7 +2,7 @@
 #define VECTEUR3D_H
 
 #include <iostream>
-
+#include <math.h>
 class Vecteur3D {
     private:
         double x, y, z;
@@ -19,6 +19,7 @@ class Vecteur3D {
         Vecteur3D& operator+=(Vecteur3D v2);
         Vecteur3D& operator-=(Vecteur3D v2);
         friend std::ostream& operator<<( std::ostream &flux, Vecteur3D v);
+        Vecteur3D gravite();
 };
 
 #endif
