@@ -31,9 +31,9 @@ void MobilePesant::setMasse(double _masse){
   Mobile::avance(dt);
   std::cout << "méthode avance de MobilePesant"<<std::endl;
   double vx, vy, vz;
-  vx = getVitesse().x + dt * 0;
-  vy = getVitesse().y + dt * 0;
-  vz = getVitesse().z + dt * -9.81;
+  vx = getVitesse()[0] + dt * 0;
+  vy = getVitesse()[1] + dt * 0;
+  vz = getVitesse()[2] + dt * -9.81;
 
   Vecteur3D V3D(vx, vy, vz);
   setVitesse(V3D);

@@ -23,7 +23,7 @@ class Mobile {
     void setPosition(const Vecteur3D &);
     const Vecteur3D & getVitesse() const;
     void setVitesse(const Vecteur3D &);
-    virtual void afficher() const;
+    virtual void afficher();
     virtual void avance(double dt);
     virtual Mobile* copie();
 

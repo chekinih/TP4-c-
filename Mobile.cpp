@@ -28,19 +28,19 @@ const Vecteur3D & Mobile::getVitesse() const {
 void Mobile::setVitesse(const Vecteur3D & _vitesse) {
   vitesse = _vitesse;
 }
-void Mobile::afficher() const {
+void Mobile::afficher() {
   std::cout << "Mobile" << std::endl;
   std::cout << "Nom: " << nom << std::endl;
-  std::cout << "Posiition x = " << position.x << " y = " << position.y << " z = " << position.z << std::endl;
-  std::cout << "Vitesse x = " << vitesse.x << " y = " << vitesse.y << " z = " << vitesse.z << std::endl << std::endl;
+  std::cout << "Position x = " << position[0] << " y = " << position[1] << " z = " << position[2] << std::endl;
+  std::cout << "Vitesse x = " << vitesse[0] << " y = " << vitesse[1] << " z = " << vitesse[2] << std::endl << std::endl;
 }
 
 
  void Mobile::avance(double dt) {
   std::cout << "méthode avance de Mobile" <<std::endl;
-  position.x = position.x + dt * vitesse.x;
-  position.y = position.y + dt * vitesse.y;
-  position.z = position.z + dt * vitesse.z;
+  position[0] = position[0] + dt * vitesse[0];
+  position[1] = position[1] + dt * vitesse[1];
+  position[2] = position[2] + dt * vitesse[2];
 
   //return position;
 }
