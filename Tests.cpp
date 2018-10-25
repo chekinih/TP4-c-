@@ -246,15 +246,15 @@ bool Tests::testSimulation4()
     return true;
 }
 
-static bool testVecteur3D(){
+ bool Tests::testVecteur3D(){
   Vecteur3D v1(3,2,1);
   Vecteur3D v2(2,2,2);
-  v1+=v2;
-  Vecteur3D expected(5,4,3);
+  v1+=2*v2 ;
+  Vecteur3D expected(7,6,5);
   if(v1 == expected)
   {
     std::cout << " le test testVecteur3D réussit"<< std::endl;
-    std::cout << "v1: "<< v1;
+    std::cout << "v1: "<< v1 << std::endl <<  "v2: "<< v2 << std::endl ;
     return true;
   }else{
     std::cout << " le test testVecteur3D ne réussit pas"<< std::endl;
