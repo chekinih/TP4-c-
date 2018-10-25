@@ -11,6 +11,7 @@ class Vecteur3D {
         Vecteur3D(double _x, double _y, double _z): x(_x), y(_y), z(_z)
         {}
         double& operator[](int pos);
+        Vecteur3D operator+(Vecteur3D & v2);
 
 };
 
