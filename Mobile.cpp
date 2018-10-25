@@ -38,22 +38,16 @@ void Mobile::afficher() {
 
  void Mobile::avance(double dt) {
   std::cout << "méthode avance de Mobile" <<std::endl;
-  position[0] = position[0] + dt * vitesse[0];
-  position[1] = position[1] + dt * vitesse[1];
-  position[2] = position[2] + dt * vitesse[2];
+  int i;
+  for(i=0; i< 3; i++)
+  {
+    position[i] +=vitesse[i]*dt;
+  }
 
-  //return position;
 }
 
 Mobile::~Mobile() {
-  // if(position != NULL) {
-  //   delete position;
-  //   // position = NULL;
-  // }
-  // if(vitesse !=  NULL){
-  //   delete vitesse;
-  //   // vitesse = NULL;
-  // }
+
   std::cout << "Destuction du mobile " << nom << std::endl << std::endl;
 }
 
