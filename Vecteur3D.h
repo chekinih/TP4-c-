@@ -12,7 +12,8 @@ class Vecteur3D {
         {}
         double& operator[](int pos);// revenir par rapport aux const
         Vecteur3D operator + (Vecteur3D& v2);
-       Vecteur3D operator *(double d);
+        Vecteur3D operator *(double d);
+        bool operator == (Vecteur3D& v);
 
 };
 

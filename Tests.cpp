@@ -16,7 +16,7 @@ bool Tests::testMobile1()
   //Fonction
    m1.avance(2);
   //Assertion
-  return (m1.getPosition()[0] == expected[0]) && (m1.getPosition()[1] == expected[1]) && (m1.getPosition()[2] == expected[2]);
+  return m1.getPosition() == expected;
 
 }
 
@@ -40,17 +40,10 @@ bool Tests::testSimulation1()
   // s->afficherCorps();
   s.simuler(2);
   // s->afficherCorps();
-
-
   Vecteur3D positionEspereM1(6,6,6);
   Vecteur3D positionEspereM2(4,4,4);
 
-  return
-  (m1->getPosition()[0] == positionEspereM1[0]) && (m1->getPosition()[1] == positionEspereM1[1]) && (m1->getPosition()[2] == positionEspereM1[2])
-  &&
-  (m2->getPosition()[0] == positionEspereM2[0]) && (m2->getPosition()[1] == positionEspereM2[1]) && (m2->getPosition()[2] == positionEspereM2[2])
-  ;
-
+  return (m1->getPosition() == positionEspereM1 && m2->getPosition() == positionEspereM2);
 
 }
 
@@ -145,14 +138,9 @@ bool Tests::testSimulation3()
   s.afficherCorps();
 
 
-  return (mobileOrdinaire->getPosition()[0] == expected_Pos_Ordinaire[0]) && (mobileOrdinaire->getPosition()[1] == expected_Pos_Ordinaire[1]) && (mobileOrdinaire->getPosition()[2] == expected_Pos_Ordinaire[2])
-  &&
-        (mobileOrdinaire->getVitesse()[0] == expected_Vit_Ordinaire[0]) && (mobileOrdinaire->getVitesse()[1] == expected_Vit_Ordinaire[1]) && (mobileOrdinaire->getVitesse()[2] == expected_Vit_Ordinaire[2])
-  &&
-        (mobilePesant->getPosition()[0] == expected_Pos_Pesant[0]) && (mobilePesant->getPosition()[1] == expected_Pos_Pesant[1]) && (mobilePesant->getPosition()[2] == expected_Pos_Pesant[2])
-  &&
-        (mobilePesant->getVitesse()[0] == expected_Vit_Pesant[0]) && (mobilePesant->getVitesse()[1] == expected_Vit_Pesant[1]) && (mobilePesant->getVitesse()[2] == expected_Vit_Pesant[2]);
-
+return (mobileOrdinaire->getPosition() == expected_Pos_Ordinaire && mobileOrdinaire->getVitesse() == expected_Vit_Ordinaire
+        &&
+        mobilePesant->getPosition() == expected_Pos_Pesant && mobilePesant->getVitesse() == expected_Vit_Pesant);
 }
 
 
@@ -251,8 +239,6 @@ bool Tests::testSimulation4()
     sAcien.simuler(2);
 
     Simulation sNouveau(sAcien);
-
-
 
     sNouveau.simuler(2);
     sNouveau.afficherCorps();
