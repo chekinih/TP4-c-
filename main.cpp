@@ -3,6 +3,7 @@
 #include "Tests.h"
 #include "Simulation.h"
 #include "Vecteur3D.h"
+#include "Terre.h"
 
 int main()
 {
@@ -15,7 +16,9 @@ int main()
 
     //Tests::testSimulation2();
     //Tests::testSimulation4();
-    Tests::testVecteur3D();
+    //Tests::testVecteur3D();
+
+    Terre::getInstance();
 
     return 0;
 }

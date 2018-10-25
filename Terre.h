@@ -2,11 +2,11 @@
 #define TERRE_H
 
 #include "Vecteur3D.h"
-
+#include <cmath>
 class Terre {
     private:
-        const double GM = 3.986* pow(10,14);
-        double RT;
+        const double GM = 3.986 * pow(10, 14);
+        const double RT = 6378000;
 
     public:
         Vecteur3D gravite(Vecteur3D);
