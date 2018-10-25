@@ -13,3 +13,10 @@ double& Vecteur3D::operator[](int pos) {
             break;
     }
 }
+
+Vecteur3D operator + (Vecteur3D& v2){
+  return Vecteur3D(v2[0]+(*this)[0],v2[0]+(*this)[1],v2[0]+(*this)[2]);
+}
+Vecteur3D Vecteur3D::operator *(double d){
+  return Vecteur3D(d*(*this)[0],d*(*this)[1],d*(*this)[2]);
+}

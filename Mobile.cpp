@@ -42,7 +42,6 @@ void Mobile::afficher() {
   position[1] = position[1] + dt * vitesse[1];
   position[2] = position[2] + dt * vitesse[2];
 
-  //return position;
 }
 
 Mobile::~Mobile() {
