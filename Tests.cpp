@@ -329,20 +329,26 @@ bool Tests::testSatellite1(){
   Terre *t;
   t->getInstance();
   Simulation s;
-  double h = 200;
+  double h = 200000;
+  double dt = 0;
   double x = sqrt((t->getGM() / t->getRT() + h)-pow(h,2));
   double duree = 2*3.14*sqrt(pow(t->getRT()+h, 3)/t->getGM());
-  double dt = 0;
   Vecteur3D pos(x, 0, h);
+  //Vecteur3D pos(t->getRT()+h, 0, h);
   Vecteur3D vitesse(0, sqrt(t->getGM()/(t->getRT()+h)), 0);
   MobilePesant *satellite = new MobilePesant("satellite", pos, vitesse, 40000);
   s.ajoutCorps(satellite);
-  while(dt <= duree)
+
+  // 5340 == 1h29min
+
+  while(dt <= 5340)
   {
     s.simuler(0.1);
     dt += 0.1;
-  }
 
+  }
+    std::cout <<"duree "<< duree <<std::endl;
+    std::cout <<"x "<< x <<std::endl;
   std::cout << "position du satellite: " << satellite->getPosition()<< std::endl;
   double distance = satellite->getPosition().distance(pos);
   std::cout << "distance: " << distance << std::endl;

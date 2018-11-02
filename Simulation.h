@@ -15,6 +15,7 @@ public:
   ~Simulation();
   std::list<Mobile*> getCorps() const;
   double getTemps()const;
+  void setTemps(double dt);
   void oteCorps(Mobile * _m);
   void ajoutCorps(Mobile * _m);
   void afficherCorps();
