@@ -33,7 +33,7 @@ void MobilePesant::setMasse(double _masse){
 
    /*faire appel à la méthode avance() de la super classe pour
    pouvoir mettre à jour sa position*/
-   
+
   Mobile::avance(dt);
   std::cout << "méthode avance de MobilePesant"<<std::endl;
   Vecteur3D v (0,0,-9.81);
@@ -49,6 +49,7 @@ void MobilePesant::setMasse(double _masse){
 }
 
 Mobile * MobilePesant::copie() {
+  std::cout << "méthode copie de MobilePesant" << std::endl;
     return new MobilePesant(nom, position, vitesse, masse);
 }
 

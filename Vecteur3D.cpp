@@ -47,11 +47,15 @@ Vecteur3D& Vecteur3D::operator-=(Vecteur3D v2) {
 }
 
 bool Vecteur3D::operator==(Vecteur3D v2) {
-    return ((*this)[0] == v2[0]) && ((*this)[1] == v2[1]) && ((*this)[2] == v2[2]);
+    return (RoundTo((*this)[0]) == RoundTo(v2[0])) && (RoundTo((*this)[1]) == RoundTo(v2[1])) && (RoundTo((*this)[2]) == RoundTo(v2[2]));
 }
 
 std::ostream& operator<<( std::ostream &flux, Vecteur3D v )
 {
     flux << "x: " << v[0] << " y: " << v[1] << " z: " << v[2];
     return flux;
+}
+
+double Vecteur3D::RoundTo(double nombre) {
+  return (1./100000.) * floor(nombre * 100000.);
 }

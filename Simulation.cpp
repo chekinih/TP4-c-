@@ -19,6 +19,9 @@ Simulation::~Simulation()
   corps.clear();
 }
 
+
+/*Constructeur par copie*/
+
 Simulation::Simulation(const Simulation & _simulation)
 {
   std::list<Mobile *> corps = _simulation.corps;

@@ -112,6 +112,7 @@ bool Tests::testMobile2() {
 
     /*mettre à jour le temps*/
     temps += dt;
+
   }
   std::cout << "temps: " << temps << std::endl;
   std::cout << "Time expected: "<< expectedTime << std::endl;
@@ -274,19 +275,23 @@ bool Tests::testSimulation4()
     Simulation sAcien;
 
     Mobile* m1 = new Mobile("M1");
-      Vecteur3D v1(3,3,3);
-      m1->setVitesse(v1);
+    Vecteur3D v1(3,3,3);
+    m1->setVitesse(v1);
 
-      Vecteur3D p2(2,2,2);
-      Vecteur3D v2(1,1,1);
-      MobilePesant * m2 = new MobilePesant("M2", p2, v2, 2);
+    Vecteur3D p2(2,2,2);
+    Vecteur3D v2(1,1,1);
+    MobilePesant * m2 = new MobilePesant("M2", p2, v2, 2);
+
+    // ajout d'un mobile ordinaire et d'un mobile pesant dans la liste de mobile
 
     sAcien.ajoutCorps(m1);
     sAcien.ajoutCorps(m2);
-    sAcien.oteCorps(m2);
-  //  sNouveau.oteCorps(m2);
+    //sAcien.oteCorps(m2);
+    // sNouveau.oteCorps(m2);
 
     sAcien.simuler(2);
+
+    // création d'une nouvelle simulation 
 
     Simulation sNouveau(sAcien);
 
@@ -336,5 +341,7 @@ bool Tests::testTerre()
 }
 
 bool Tests::testSatellite1(){
+  double x = sqrt((3.986 * pow(10, 14) / 6378000 + 200)-pow(200,2));
+  Vecteur3D m(x, 0, 200);
 
 }

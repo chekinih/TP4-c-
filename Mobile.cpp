@@ -53,5 +53,6 @@ Mobile::~Mobile() {
 
 
 Mobile* Mobile::copie() {
+  std::cout << "méthode copie de Mobile" << std::endl;
     return new Mobile(nom, position, vitesse);
 }
