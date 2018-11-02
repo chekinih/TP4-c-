@@ -15,6 +15,8 @@ class Terre {
             static Terre obj;
             return obj;
         }
+        const double & getRT() const;
+        const double & getGM() const;
 
     private:
         Terre();

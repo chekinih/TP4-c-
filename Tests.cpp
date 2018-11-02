@@ -4,6 +4,8 @@
 #include <iostream>
 #include "Simulation.h"
 
+/*Cette éthode teste la classe mobile et renvoie true si les tests passent.*/
+
 bool Tests::testMobile1()
 {
   //Initialisation
@@ -15,16 +17,25 @@ bool Tests::testMobile1()
   Vecteur3D expected(4, 4, 4);
   //Fonction
    m1.avance(2);
-  //Assertion
-  return m1.getPosition() == expected;
 
+  bool success = m1.getPosition() == expected;
+  if(success)
+  {
+     std::cout << "Le test testMobile1 a reussie" << std::endl;
+  }else{
+     std::cout << "Le test testMobile1 n'a pas reussie" << std::endl;
+  }
 }
+
+/*Cette éthode teste la classe simulation et renvoie true si les tests passent.*/
 
 bool Tests::testSimulation1()
 {
 
-  // Initialisation
+  // creation d une simulation
   Simulation s;
+
+  /* Creation de deux mobiles */
 
   Mobile* m1 = new Mobile("M1");
   Vecteur3D v1(3,3,3);
@@ -34,22 +45,41 @@ bool Tests::testSimulation1()
   Vecteur3D v2(1,1,1);
   Mobile* m2 = new Mobile("M2", p2, v2);
 
+// ajout des mobiles dans la liste de mobiles de la classe Simulation
+
   s.ajoutCorps(m1);
   s.ajoutCorps(m2);
 
   // s->afficherCorps();
   s.simuler(2);
   // s->afficherCorps();
+
+  /*creation de deux vecteurs3D qu'on comprare avec les positions des deux mobiles*/
+
   Vecteur3D positionEspereM1(6,6,6);
   Vecteur3D positionEspereM2(4,4,4);
 
-  return (m1->getPosition() == positionEspereM1 && m2->getPosition() == positionEspereM2);
+  bool success = m1->getPosition() == positionEspereM1 && m2->getPosition() == positionEspereM2;
+  if(success)
+  {
+     std::cout << "Le test testSimulation1 a reussie" << std::endl;
+  }else{
+     std::cout << "Le test testSimulation1 n'a pas reussie" << std::endl;
+  }
 
 }
 
+  /*Le testSimulation2 teste le destructeur de la classe Simulation*/
+
 bool Tests::testSimulation2()
 {
-  /*Le testSimulation2 teste le destructeur de la classe Simulation*/
+
+  /*on commence par déclarer une simulation, puis ajouter des mobiles après
+   leur création à la liste corps, on fait appel à la méthode simuler qui
+    fait avancer tous les mobiles et qui modifie le temps.et on a initialisé
+    deux objets de type vecteur3D « positionEspereM1» et « positionEspereM2»
+    qui contiennent la position attendue après l’appel à la méthode simuler().
+    */
 
   Simulation* s = new Simulation();
 
@@ -77,6 +107,7 @@ bool Tests::testSimulation2()
   return true;
 }
 
+ /*Cette méthode teste la classe MobilePesant.*/
 bool Tests::testMobile2() {
    //h represente l'altitude
  /*Cette méthode teste la classe MobilePesant.
@@ -103,6 +134,7 @@ bool Tests::testMobile2() {
 
   mobilePesant->setVitesse(vitesse);
 
+  /*Le mobile pesant avance tant qu'il n 'est pas arrivé a la terre'*/
   while (h > 0) {
 
     mobilePesant->avance(dt);
@@ -195,85 +227,15 @@ bool Tests::testSimulation3()
 
 
 
-/*bool Tests::testMobile2(){
-
-  std::string nom = "mobilePesant";
-  Vecteur3D vPos(23,54,87);
-  Mobile* mobilePesant = new MobilePesant(nom,vPos, 200);
-
-  for(int i=0; i<4; i++)
-  {
-    mobilePesant->avance(2);
-  }
-
-
-    std::cout << "Mobile pesant M1 : " << std::endl;
-    std::cout << "Position: mobilePesant[0] =  : " << mobilePesant->getPosition()[0] << std::endl;
-    std::cout << "Position: mobilePesant[1] =  : " << mobilePesant->getPosition()[1] << std::endl;
-    std::cout << "Position:mobilePesant[2] =  : " << mobilePesant->getPosition()[2] << std::endl;
-
-
-    std::cout << "Vitesse: mobilePesant[0] =  : " << mobilePesant->getVitesse()[0] << std::endl;
-    std::cout << "Vitesse: mobilePesant[1] =  : " << mobilePesant->getVitesse()[1] << std::endl;
-    std::cout << "Vitesse: mobilePesant[2] =  : " << mobilePesant->getVitesse()[2] << std::endl;
-  delete mobilePesant;
-
-
-  Mobile* m1;
-  std::string s ="m1";
-  m1= new MobilePesant(s);
-  Vecteur3D v1(3,3,3);
-  m1->setVitesse(v1);
-
-  Vecteur3D expectedP1(6, 6, 6);
-
-  m1->avance(2);
-
-  std::cout << "Mobile pesant M1 : " << std::endl;
-  std::cout << "Position: M1[0] =  : " << m1->getPosition()[0] << std::endl;
-  std::cout << "Position: M1[1] =  : " << m1->getPosition()[1] << std::endl;
-  std::cout << "Position: M1[2] =  : " << m1->getPosition()[2] << std::endl;
-
-  Vecteur3D expectedV1(3, 3, -16.62);
-
-  std::cout << "Vitesse: M1[0] =  : " << m1->getVitesse()[0] << std::endl;
-  std::cout << "Vitesse: M1[1] =  : " << m1->getVitesse()[1] << std::endl;
-  std::cout << "Vitesse: M1[2] =  : " << m1->getVitesse()[2] << std::endl;
-
-  if((m1->getPosition()[0] == expectedP1[0]) && (m1->getPosition()[1]== expectedP1[1]) && (m1->getPosition()[2]== expectedP1[2])
-      && (m1->getVitesse()[0] == expectedV1[0]) && (m1->getVitesse()[1]== expectedV1[1]) && (m1->getVitesse()[2]== expectedV1[2]) )
-  {
-    std::cout << "Le test Mobile2 réussit" << std::endl;
-    return true;
-  }else{
-    return false;
-  }
-   delete m1;
-
-
-/*
-  Vecteur3D p2(2,2,2);
-  Vecteur3D v2(1,1,1);
-  Mobile* m2 = new MobilePesant("M2", p2, v2);
-  Vecteur3D expectedV2(4, 4, 4);
-
-  Vecteur3D avance2 = m2->avance(2);
-
-  std::cout << "Mobile pesant M2 : " << std::endl;
-  std::cout << "M2[0] =  : " << m2->getPosition()[0] << std::endl;
-  std::cout << "M2[1] =  : " << m2->getPosition()[1] << std::endl;
-  std::cout << "M2[2] =  : " << m2->getPosition()[2] << std::endl;
-
-*//*
-//  return (avance1[0] == expectedV1[0]) && (avance1[1] == expectedV1[1]) && (avance1[2] == expectedV1[2]);
-
-}*/
-
-
+ /*Cette méthode teste le constructeur par copie codé dans la classe
+  simulation qui copie tous les mobiles de la simulation en paramètre en
+  suivant le type dynamique des mobiles(ordinaire ou pesant).*/
 bool Tests::testSimulation4()
 {
+  /*Création d'une simulation*/
     Simulation sAcien;
 
+    /*Création de deux mobiles (ordinaire et pesant)*/
     Mobile* m1 = new Mobile("M1");
     Vecteur3D v1(3,3,3);
     m1->setVitesse(v1);
@@ -286,29 +248,46 @@ bool Tests::testSimulation4()
 
     sAcien.ajoutCorps(m1);
     sAcien.ajoutCorps(m2);
-    //sAcien.oteCorps(m2);
-    // sNouveau.oteCorps(m2);
 
-    sAcien.simuler(2);
-
-    // création d'une nouvelle simulation 
-
+    // création d'une nouvelle simulation en utilisant le constructeur par copie
     Simulation sNouveau(sAcien);
 
-    sNouveau.simuler(2);
+    //sNouveau.simuler(2);
+
+    /*on voit bien que la méthode copie est appellée en fonction du type dynamique de l'objet
+    car dans les méthode copies des deux classes Mobile et Mobile pesant, on a fait un affichage
+    spécifique à la classe*/
+
     sNouveau.afficherCorps();
 
     return true;
 }
 
+
+/*Cette méthode teste les opérateurs de la classe vecteur3D comme
+l'opérateur d'addition, d'affectation, de multiplication et l prérateur <<*/
+
  bool Tests::testVecteur3D(){
+
+   /*création de deux vecteurs*/
+
   Vecteur3D v1(3,2,1);
   Vecteur3D v2(2,2,2);
+
   v1+=2*v2 ;
+
+  /*Estimation des coordonnées duvecteur v1 eb faisant la multiplication
+   et l'affectation en meme temps*/
+
   Vecteur3D expected(7,6,5);
+
+  /*tester si le vecteur résultant et le vecteur estimé sont
+   les memes en utilisant l'opérateur ==*/
+
   if(v1 == expected)
   {
     std::cout << " le test testVecteur3D réussit"<< std::endl;
+    /*Affichage des coordonnée d'un vecteur donnée en utilisant l'opérateur <<*/
     std::cout << "v1: "<< v1 << std::endl <<  "v2: "<< v2 << std::endl ;
     return true;
   }else{
@@ -318,18 +297,24 @@ bool Tests::testSimulation4()
 
 }
 
+/*Cette méthode teste la classe Terre et renvoie true se les tests passent */
 bool Tests::testTerre()
 {
-  // a revoir
+
   Vecteur3D v;
   Vecteur3D v1(6378000,0,0);
+
+  /* Appel à ala fonction gravité de la classe terre*/
 
   v = Terre::getInstance().gravite(v1);
   std::cout << "v1: "<< v1 << std::endl;
   std::cout << "v: "<< v << std::endl;
 
+  /*Estimation des coordonnées du vecteur resultat après l'appel a la méthode gravité*/
   Vecteur3D expected(-9.7987 ,0,0);
   std::cout << "expected "<< expected<< std::endl;
+
+  /*Tester l'egalité du vecteur résultat et celui estimé*/
 
   if(v == expected)
   {
@@ -341,7 +326,26 @@ bool Tests::testTerre()
 }
 
 bool Tests::testSatellite1(){
-  double x = sqrt((3.986 * pow(10, 14) / 6378000 + 200)-pow(200,2));
-  Vecteur3D m(x, 0, 200);
+  Terre *t;
+  t->getInstance();
+  Simulation s;
+  double h = 200;
+  double x = sqrt((t->getGM() / t->getRT() + h)-pow(h,2));
+  double duree = 2*3.14*sqrt(pow(t->getRT()+h, 3)/t->getGM());
+  double dt = 0;
+  Vecteur3D pos(x, 0, h);
+  Vecteur3D vitesse(0, sqrt(t->getGM()/(t->getRT()+h)), 0);
+  MobilePesant *satellite = new MobilePesant("satellite", pos, vitesse, 40000);
+  s.ajoutCorps(satellite);
+  while(dt <= duree)
+  {
+    s.simuler(0.1);
+    dt += 0.1;
+  }
+
+  std::cout << "position du satellite: " << satellite->getPosition()<< std::endl;
+  double distance = satellite->getPosition().distance(pos);
+  std::cout << "distance: " << distance << std::endl;
+
 
 }

@@ -22,6 +22,7 @@ class Vecteur3D {
         Vecteur3D& operator-=(Vecteur3D v2);
         friend std::ostream& operator<<( std::ostream &flux, Vecteur3D v);
         double RoundTo(double nombre);
+        double distance(Vecteur3D & v);
 };
 
 #endif

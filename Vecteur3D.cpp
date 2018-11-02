@@ -59,3 +59,8 @@ std::ostream& operator<<( std::ostream &flux, Vecteur3D v )
 double Vecteur3D::RoundTo(double nombre) {
   return (1./100000.) * floor(nombre * 100000.);
 }
+
+double Vecteur3D::distance(Vecteur3D & v)
+{
+  return (sqrt(pow(x - v[0], 2) + pow(y - v[1], 2) + pow(z - v[2], 2)));
+}

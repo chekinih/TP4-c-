@@ -18,3 +18,11 @@ Terre::Terre(const Terre &) {
 Terre::~Terre() {
 
 }
+const double & Terre::getRT() const
+{
+  return RT;
+}
+const double & Terre::getGM() const
+{
+  return GM;
+}
