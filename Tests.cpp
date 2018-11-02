@@ -49,9 +49,11 @@ bool Tests::testSimulation1()
 
 bool Tests::testSimulation2()
 {
+  /*Le testSimulation2 teste le destructeur de la classe Simulation*/
 
-  // Initialisation
   Simulation* s = new Simulation();
+
+  /*création de deux mobiles et ajout dans la liste coprs de la classe simulation*/
 
   Mobile* m1 = new Mobile("M1");
   Vecteur3D v1(3,3,3);
@@ -61,24 +63,38 @@ bool Tests::testSimulation2()
   Vecteur3D v2(1,1,1);
   Mobile* m2 = new Mobile("M2", p2, v2);
 
+/*Ajout des mobiles dans la liste de mobiles corps de la classe simulation*/
+
   s->ajoutCorps(m1);
   s->ajoutCorps(m2);
 
+/*déstruction les mobiles contenus dans la liste de mobiles de la classe simulation*/
+
   delete s;
 
+  /*delete(m1);  on ne peut pas faire un delete sur le mobile m1 car il a été détruit avec l'appel de delete s;*/
 
-  std::cout << "X de m2: " << m2->getPosition()[0] << std::endl << std::endl;
   return true;
 }
 
 bool Tests::testMobile2() {
-  //ecteur3D h; //z represente l'altitude
+   //h represente l'altitude
+ /*Cette méthode teste la classe MobilePesant.
+ On a choisi une hauteur h = 10, un intervalle de temps de 0.01,
+ et on aimerait tester si un mobile pesant lâché d’une hauteur h,
+ mettra un certain temps (Calculé au préalable)pour atteindre le sol.*/
 
   double h = 10.0;
   double temps = 0;
   double dt = 0.01;
   double expectedTime;
+
+  /*calculer le temps estimé*/
+
   expectedTime = sqrt((2 * h)/9.81);
+
+  /*Création d'un mobile pesant avec une vitesse nulle
+  et qui se trouve à une altitude h*/
 
   Vecteur3D vitesse(0, 0, 0);
   Vecteur3D position(0,0, h);
@@ -88,15 +104,22 @@ bool Tests::testMobile2() {
   mobilePesant->setVitesse(vitesse);
 
   while (h > 0) {
-    //std::cout << "Z: " << mobilePesant->getPosition()[2]<< std::endl;
+
     mobilePesant->avance(dt);
+
+    /*mettre à jour h par sa position */
     h = mobilePesant->getPosition()[2];
+
+    /*mettre à jour le temps*/
     temps += dt;
   }
   std::cout << "temps: " << temps << std::endl;
   std::cout << "Time expected: "<< expectedTime << std::endl;
 
   delete mobilePesant;
+
+   /*tester si le mobile a fait le temps estimé pour atteindre
+    le sol à une erreur de 10 puissance -1*/
 
   if((temps <= expectedTime + 0.1) && (temps >= expectedTime - 0.1))
   {
@@ -108,9 +131,17 @@ bool Tests::testMobile2() {
   }
 }
 
+/*Cette méthode gère les les mobiles ordinaires et les mobiles pesants
+ (la méthode avance() est appelée en fonction du type dynamique de l’objet
+ (Elle est déclaré virtuelle dans la classe mère).*/
+
 bool Tests::testSimulation3()
 {
+
   Simulation s;
+
+  /*Création de deux mobiles (ordinaire et pesant)*/
+
   std::string ordinaire =" MobileOrdianre";
   std::string pesant =" MobilePesant";
 
@@ -121,9 +152,16 @@ bool Tests::testSimulation3()
 
   Mobile *mobileOrdinaire = new Mobile(ordinaire, positionO, vitesseO);
   Mobile *mobilePesant = new MobilePesant(pesant, positionP,vitesseP,200.0);
+
+  /*Ajout des mobile à la liste des mobiles corps de la simulation*/
+
   s.ajoutCorps(mobileOrdinaire);
   s.ajoutCorps(mobilePesant);
+
   //s.afficherCorps();
+
+  /*estimation des coordonnées des vecteurs positions et vitesses des deux mobiles
+  ( En calculant suivant le type dynamique ) */
 
   Vecteur3D expected_Pos_Ordinaire(12,12,8);
   Vecteur3D expected_Vit_Ordinaire(1, 1, 1); // la vitesse d'mobile ordinaire reste inchangée
@@ -135,12 +173,23 @@ bool Tests::testSimulation3()
   {
     s.simuler(2);
   }
-  s.afficherCorps();
+  //s.afficherCorps();
 
+  /*tester si leur positions et vitesses sont bien celles estimées*/
 
-return (mobileOrdinaire->getPosition() == expected_Pos_Ordinaire && mobileOrdinaire->getVitesse() == expected_Vit_Ordinaire
+  bool success= (mobileOrdinaire->getPosition() == expected_Pos_Ordinaire && mobileOrdinaire->getVitesse() == expected_Vit_Ordinaire
         &&
         mobilePesant->getPosition() == expected_Pos_Pesant && mobilePesant->getVitesse() == expected_Vit_Pesant);
+
+        if (success)
+        {
+          std::cout << "Le test testSimulation3 réussit" << std::endl;
+          return true;
+        }else{
+          std::cout << "Le test testSimulation3 ne réussit pas" << std::endl;
+          return false;
+        }
+
 }
 
 
@@ -235,7 +284,7 @@ bool Tests::testSimulation4()
     sAcien.ajoutCorps(m1);
     sAcien.ajoutCorps(m2);
     sAcien.oteCorps(m2);
-    sNouveau.oteCorps(m2);
+  //  sNouveau.oteCorps(m2);
 
     sAcien.simuler(2);
 
@@ -261,5 +310,31 @@ bool Tests::testSimulation4()
     std::cout << " le test testVecteur3D ne réussit pas"<< std::endl;
     return false;
   }
+
+}
+
+bool Tests::testTerre()
+{
+  // a revoir
+  Vecteur3D v;
+  Vecteur3D v1(6378000,0,0);
+
+  v = Terre::getInstance().gravite(v1);
+  std::cout << "v1: "<< v1 << std::endl;
+  std::cout << "v: "<< v << std::endl;
+
+  Vecteur3D expected(-9.7987 ,0,0);
+  std::cout << "expected "<< expected<< std::endl;
+
+  if(v == expected)
+  {
+    std::cout << "Le test testTerre réussit"<< std::endl;
+  }else{
+    std::cout << "Le test testTerre ne réussit pas "<< std::endl;
+
+  }
+}
+
+bool Tests::testSatellite1(){
 
 }

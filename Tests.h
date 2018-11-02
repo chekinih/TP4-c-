@@ -5,6 +5,7 @@
 #include "Vecteur3D.h"
 #include "Simulation.h"
 #include "MobilePesant.h"
+#include "Terre.h"
 
 class Tests {
 public:
@@ -16,6 +17,8 @@ public:
   static bool testSimulation3();
   static bool testSimulation4();
   static bool testVecteur3D();
+  static bool testTerre();
+  static bool testSatellite1();
 
 };
 

@@ -27,14 +27,22 @@ void MobilePesant::setMasse(double _masse){
   masse = _masse;
 }
 
+/*Cette méthode fait avancer un mobile pesant.*/
+
  void MobilePesant::avance(double dt){
+
+   /*faire appel à la méthode avance() de la super classe pour
+   pouvoir mettre à jour sa position*/
+   
   Mobile::avance(dt);
   std::cout << "méthode avance de MobilePesant"<<std::endl;
   Vecteur3D v (0,0,-9.81);
 
+  /*Mettre à jour la vitesse du mobile*/
+
   for(int i = 0; i<3; i++)
   {
-    v[i] += getVitesse()[i] * dt;
+    v[i] =  getVitesse()[i] + v[i]* dt;
   }
 
   setVitesse(v);

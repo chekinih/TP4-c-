@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Mobile.h"
+#include "Terre.h"
 
 class MobilePesant: public Mobile {
   private:

@@ -2,6 +2,7 @@
 #define TERRE_H
 
 #include "Vecteur3D.h"
+
 #include <cmath>
 class Terre {
     private:
